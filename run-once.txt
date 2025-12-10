@@ -1,0 +1,10 @@
+docker run --rm \
+  -v certbot-conf:/etc/letsencrypt \
+  -v $(pwd)/duckdns:/opt/duckdns \
+  certbot/dns-duckdns certonly \
+    --agree-tos \
+    --no-eff-email \
+    --email correo_git@example.com \
+    --dns-duckdns \
+    --dns-duckdns-credentials /opt/duckdns/duckdns.ini \
+    -d TU_DOMINIO.duckdns.org
