@@ -13,17 +13,9 @@ https://www.duckdns.org/domains
 docker build -t certbot:aws-custom -f Dockerfile .
 
 -- Genera los certificados iniciales con la imagen personalizada
-docker run --rm \
-  -v certbot-certs:/etc/letsencrypt \
-  -v $(pwd)/config:/opt/duckdns \
-  certbot:aws-custom certonly \
-    --agree-tos \
-    --no-eff-email \
-    --email email@example.com \
-    --authenticator dns-duckdns \
-    --dns-duckdns-credentials /opt/duckdns/duckdns.ini \
-    --dns-duckdns-propagation-seconds 120 \
-    -d TU_DOMINIO.duckdns.org
+docker run --rm -v certbot-certs:/etc/letsencrypt -v $(pwd)/config:/opt/duckdns certbot:aws-custom certonly    --agree-tos    --no-eff-email    --email 20223tn008@utez.edu.mx    --authenticator dns-duckdns    --dns-duckdns-credentials /opt/duckdns/duckdns.ini    --dns-duckdns-propagation-seconds 120    -d camilahoteles.duckdns.org
 
 -- Corre el docker compose para generar el contenedor con:
 docker compose up -d
+
+docker run --rm  -v certbot-certs:/etc/letsencrypt  -v "C:/Users/VIKO/OneDrive/Escritorio/ING/jenkins/certbot/certbotDuckDNS/config:/opt/duckdns"  certbot:aws-custom certonly  --agree-tos  --no-eff-email  --email 20223tn008@utez.edu.mx  --authenticator dns-duckdns  --dns-duckdns-credentials /opt/duckdns/duckdns.ini  --dns-duckdns-propagation-seconds 300 -d camilahoteles.duckdns.org

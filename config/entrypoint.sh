@@ -1,8 +1,8 @@
 #!/bin/sh
 
-DOMAIN="TU_DOMINIO.duckdns.org"
-EMAIL="email@example.com"
-PASS="CONTRASENA_P12" # Puede ser cualquier contraseña, es para el .p12
+DOMAIN="camilahoteles.duckdns.org"
+EMAIL="20223tn008@utez.edu.mx"
+PASS="CamilaPass" # Puede ser cualquier contraseña, es para el .p12
 LIVE="/etc/letsencrypt/live/$DOMAIN"
 P12="$LIVE/keystore.p12"
 CREDENTIALS="/opt/duckdns/duckdns.ini"
