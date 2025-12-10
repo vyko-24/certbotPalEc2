@@ -1,0 +1,29 @@
+-- Inicia sesión en duckDNS con tu cuenta de GitHub
+https://www.duckdns.org/domains
+
+-- En la vista del login busca el input que diga "sub domain" y crea un dominio de tu gusto, que no sea tan largo
+
+-- Dale en "add domain" para crear el dominio
+
+-- En la parte inferior veras tu configuración del dominio y solo actualiza la IP a la que apunta a tu IP Elástica
+
+-- Dale click en "update IP" para apuntar y ahora si ya puedes continuar con el certbot
+
+-- Ejecuta este comando para compilar la imagen del certbot
+docker build -t certbot:aws-custom -f Dockerfile .
+
+-- Genera los certificados iniciales con la imagen personalizada
+docker run --rm \
+  -v certbot-certs:/etc/letsencrypt \
+  -v $(pwd)/config:/opt/duckdns \
+  certbot:aws-custom certonly \
+    --agree-tos \
+    --no-eff-email \
+    --email email@example.com \
+    --authenticator dns-duckdns \
+    --dns-duckdns-credentials /opt/duckdns/duckdns.ini \
+    --dns-duckdns-propagation-seconds 120 \
+    -d TU_DOMINIO.duckdns.org
+
+-- Corre el docker compose para generar el contenedor con:
+docker compose up -d
